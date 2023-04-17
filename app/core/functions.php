@@ -13,3 +13,14 @@ function showDump($stuff)
     var_dump($stuff);
     echo "</pre>";
 }
+
+
+//REMEMBER INPUTS ENTRY
+function REMEMBER_INPUTS($key, $default = "")
+{
+    if (isset($_POST[$key])) {
+        return $_POST[$key];
+    }
+
+    return $default;
+}

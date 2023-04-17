@@ -17,7 +17,7 @@ class Database
         $pdo = null;
     }
 
-    public function READ_DB(string $query, array $data)
+    public function READ_DB(string $query, array $data = [])
     {
         $conn = $this->DB_CONNECT();
         $stmt = $conn->prepare($query);
@@ -29,7 +29,7 @@ class Database
         return false;
     }
 
-    public function WRITE_DB(string $query, array $data)
+    public function WRITE_DB(string $query, array $data = [])
     {
         $conn = $this->DB_CONNECT();
         $stmt = $conn->prepare($query);
@@ -42,5 +42,3 @@ class Database
         return false;
     }
 }
-
-$db = new Database();

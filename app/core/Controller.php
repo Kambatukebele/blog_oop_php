@@ -13,13 +13,15 @@ class Controller
         }
     }
 
-    private function LOAD_MODEL(string $model)
+    protected function LOAD_MODEL(string $model)
     {
         $fileName = "../app/models/" . $model . ".model.php";
         if (file_exists($fileName)) {
             include $fileName;
 
-            $model = $model;
+            return $model = new $model();
         }
+
+        return false;
     }
 }

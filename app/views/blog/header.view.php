@@ -3,13 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-    <title>NEWSROOM - Free Bootstrap Magazine Template</title>
+    <title><?= $data['page_title']; ?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
     <link href="<?= ROOT_ASSETS ?>blog/img/favicon.ico" rel="icon">
+
+    <!-- Goofle icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -43,17 +47,17 @@
                 </div>
             </div>
             <div class="col-md-4 text-right d-none d-md-block">
-                Monday, January 01, 2045
+                Today is : <?php echo date("Y-m-d");  ?>
             </div>
         </div>
         <div class="row align-items-center py-2 px-lg-5">
             <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
+                <a href="<?= ROOT ?>" class="navbar-brand d-none d-lg-block">
                     <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <img class="img-fluid" src="<?= ROOT_ASSETS ?>blog/img/ads-700x70.jpg" alt="">
+                <!-- HERE WAS AN IMAGE -->
             </div>
         </div>
     </div>
@@ -63,7 +67,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 mb-3">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
+            <a href="<?= ROOT ?>" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -71,9 +75,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="category.html" class="nav-item nav-link">Categories</a>
-                    <a href="single.html" class="nav-item nav-link">Single News</a>
+                    <a href="<?= ROOT ?>home" class="nav-item nav-link active">Home</a>
+                    <a href="<?= ROOT ?>category" class="nav-item nav-link">Categories</a>
+                    <a href="<?= ROOT ?>single" class="nav-item nav-link">Single News</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -82,7 +86,18 @@
                             <a href="#" class="dropdown-item">Menu item 3</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="<?= ROOT ?>contact" class="nav-item nav-link">Contact</a>
+                    <?php if (isset($_SESSION['userDetails']) && is_array($_SESSION['userDetails'])) : ?>
+                    <div class="d-flex align-items-center">
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+                    </div>
+                    <a href="<?= ROOT ?>logout" class="nav-item nav-link">Logout</a>
+                    <?php else : ?>
+                    <a href="<?= ROOT ?>login" class="nav-item nav-link">Login</a>
+                    <a href="<?= ROOT ?>register" class="nav-item nav-link">Register</a>
+                    <?php endif;  ?>
                 </div>
                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
                     <input type="text" class="form-control" placeholder="Keyword">
